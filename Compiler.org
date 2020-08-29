@@ -1,0 +1,336 @@
+#+TITLE: Compiler LLVM <===> Swift + ObjectiveC + RustC
+
+* llvm-project
+
+** LLVM
+
+** clang
+
+*** use clang as one library
+
+**** libClang
+
+**** libTooling
+
+     * clang-check(syntax checking)
+     * automatic fixing of compile errors(clang-fixit)
+     * automatic code formatting(clang-format)
+
+* swift
+
+** Property
+   wrapper property =====> 重新理解
+
+
+** Swift language in depth
+
+   ***
+
+
+** Swift access control
+
+   public,private
+   open,fileprivate
+
+** Swift Error Process
+
+*** throw
+
+*** rethrow
+
+
+** Swift(IOS/Macosx) API
+
+*** FileManager(fileurl)
+    读取文件相关信息
+
+*** URL
+    Only use the URL(string:) initializer if the string you pass is a valid URL beginning with a [[URL scheme]]
+
+
+** mixing swift with the objective-C
+
+*** bridging header
+    =====> linking
+
+* objectiveC
+
+* cplusplus
+
+** Library using
+   fmt ====> format prettier
+
+* python
+
+* rust
+
+** Rc vs RefCell
+
+** match ===> map
+
+** Box ====> special case
+
+** Rust Derive vs Rust Macro
+* Lua
+* LLDB GEF ====> GDB GEF Tranfer
+
+* Flex vs Bison
+
+* 唯一的C++ GUI应用 必须做好
+
+  c++11 c++14
+  google_abeil  facebook_molly
+  c++ technicals =====> state of the art
+
+  openssl library integrate ====> EVP
+
+  javascript
+  pyhton
+  lua ====> 脚本整合
+
+  packet process library
+       ||
+       *||*
+** JUCE C++ GUI LIbrary
+
+   界面设计只用 =====> JUCE 重要
+
+* 整理 C++ library + C++ Headers
+
+* LLVM 编译组件
+
+** LLVM Header初探
+
+*** ADT/ ======> STL Related Structure
+
+****  stlExtras.h
+
+      function_ref =====> 使用的具体细节
+
+**** std::map <map>
+
+**** StringMap.h
+
+**** IndexedMap.h
+
+**** DenseMap.h
+
+**** ValueMap.h
+
+**** IntervalMap.h
+
+**** MapVector.h
+
+
+*** Support/
+
+*** IR/
+
+**** BasicBlock.h
+
+     basic block
+
+*** Target/
+
+    including some files for specific machine targets ======> 暂时默认
+
+*** CodeGen/
+    代码生成
+
+** LLVM Code Generator
+
+*** Instruction Selection
+*** Scheduling and Formation
+*** SSA-based Machine Code Optimization
+*** Register Allocation
+*** Prolog/Epilog Code Optimizations
+*** Code Emission
+
+** LLVM Code Obfuscator
+   LLVM 10.0.0 =====> 重新构建
+
+* Compiler Books(GNU Recommandations)
+
+** Muchnick. Advanced Compiler Design and Implementation.
+
+Comment by Vladimir N. Makarov: Muchnik book is a fat one. Muchnick's book is rather encyclopedia of optimizations and can be considered as collection of articles with many details (sometimes too many). But some themes (like RA and scheduling) are described not deep.
+
+Comment by Joe Buck: Also, as has been mentioned, many of his algorithms are buggy (I think it came from describing them all in his own artificial language that he had no compiler for). I suppose that if you *really* understand his text, you can debug his algorithms.
+
+Comment by Steven Bosscher: Muchnick is also famous for its >150 A4 pages of errata, especially the 1st and 2nd print. I really wouldn't recommend it to you unless you're looking for a compiler algorithms cook book.
+
+Comment by Dan Towner: Many of the algorithm examples leave crucial details poorly or incompletely explained. For example, some algorithms reference functions which have English-language description of their implementations, which could be interpreted in one of several ways. Despite this shortcoming however, this remains my preferred book on compilers, as it it contains enough information to provide an introduction to parts of the compiler I may be unfamiliar with.
+
+** Robert Morgan. Building an Optimizing compiler.
+
+Comment by Vladimir N. Makarov: Although the book volume is small, this is not an appetizer. This is practically description of Morgan's integral approach for building optimizing compilers. The book contains very detail algorithms of all passes of the proposed compiler back-end. A very interesting book to read about RA but his proposed complicated approach (combined global/local/FAT/RA) is doubtful. I've tried it and found not working well for gcc. Scheduling and software pipelining description is weak too.
+
+Comment by Steven Bosscher: This is my favorite book. If you've read the Dragon book and this one, you're well under way to being a compiler expert. I agree with Vlad about the contents of the book, but it is the only fairly comprehensive introduction text I know of that deals with LCM and SSA at a level that even I can understand ;-)
+
+** Cooper and Torczon. Engineering a compiler.
+
+Comment by Vladimir N. Makarov: It is close to their course in Rice University. A good book to start study compiler from parsing to code generation and basic optimizations. But if you are familiar with the compilers, you probably don't find interesting thoughts and approaches.
+
+** Appel. Modern Compiler implementation in C/Java/ML.
+
+Comment by Vladimir N. Makarov: Another good book to start to study compilers from parser to code generation and basic optimizations. I especially like the version in ML (Modern compiler implementation in ML).
+
+Comment by Steven Bosscher: The version in ML is the best of the three. The other two look too much like "had to do this"-books where algorithms are translated from ML, which makes them look very unnatural in C/Java.
+
+** Aho/Lam/Sethi/Ulman. Compilers: Principles, Techniques, and Tools. 2nd edition.
+
+Comment by Vladimir N. Makarov: Personally I don't like it because it is based on outdated (although classical) book. I attached a review of this book which I wrote more than year ago (when the book was not ready).
+
+Comment by Steven Bosscher: This one is old, but it is a classic. The 1st edition should be on every compiler engineer's book shelf, just because. I have never seen the 2nd edition myself.
+
+** Allen and Kennedy. Optimizing compilers for modern architectures.
+
+Comment by Vladimir N. Makarov: It is book to study more advanced (not basic) optimizations like dependence analysis, loop optimizations, inter-procedural optimizations.
+
+** Fischer. Crafting Compiler (not yet published)
+
+Comment by Vladimir N. Makarov: I am waiting for Fischer's book. I like his lectures but I am afraid using Java for this book can hurt the book.
+
+** Grune et. al. "Modern Compiler Design"
+
+Comment by Steven Bosscher: is another good introduction text, especially if you're interested in various parsing techniques.
+
+** Y.N. Srikant P.Shankar. The Compiler Design Handbook: Optimizations and Machine Code Generation.
+
+CRC Press 2003. Upto page 916.
+
+Comment by J.C.: Good topics:
+
+    Scalar Compiler Optimizations on the Static Single Assignment (SSA) Form and the Flow Graph
+        by Y.N. Srikant. Pages 99 .. 140.
+    Register Allocation (RA) by K. Gopinath. Pages 461 .. 529.
+    Instruction Selection Using Tree Parsing by Priti Shankar. Pages 565 .. 599.
+    Instruction Scheduling by R. Govindarajan. Pages 631 .. 678.
+    Optimizations for Object-Oriented Languages by Andreas Krall and Nigel Horspool. Pages 219 ..244.
+    Program Slicing by G.B. Mund, D. Goswami and Rajib Mall. Pages 269 ..291.
+    Automatic Generation of Code Optimizers from Formal Specifications by Vineeth Kumar Paleri. Pages 61 .. 97.
+    Data Flow Analysis by Uday. P. Khedker. Pages 1 .. 59.
+
+Comment by Vladimir N. Makarov: Thanks for reminding. I know about this book but I did not read it. It looks very interesting but it is expensive one. I think about buying it because it looks promising for deeper study but I have some doubts because it looks like some articles from the book are available on Internet (like software pipelining algorithms overview by Vicki Alan etc).
+
+** Alain Darte, Yves Robert, and Frederic Vivien Scheduling and Automatic Parallelization
+
+Comment by Sebastian Pop: If you like maths, a short book provides more formal background than what you can find in classical compiler literature.
+
+** Milne and Strachey's "A theory of programming language semantics"
+
+Comment by Sebastian Pop: classical book for a math audience that strangely don't get "outdated".
+
+** Glynn Winskel "The Formal Semantics of Programming Languages"
+
+Comment by Sebastian Pop: classical book for a math audience that strangely don't get "outdated".
+
+** Alexander Schrijver "Theory of Linear and Integer Programming"
+
+Comment by Sebastian Pop: classical book for a math audience that strangely don't get "outdated".
+
+Comment by Vladimir N. Makarov: If you don't want to be compiler savvy but want to understand the compiler, I'd recommend Appel's, Cooper's, Morgan's book in the same priority.
+
+** Henry S. Warren "Hacker's Delight"
+
+   Comment by Dan Towner: not exactly a compiler book in the sense of other books listed here, but a very valuable resource for anyone writing back-ends or low-level optimisation passes. This book describes how fundamental arithmetic and logic operations can be used to perform bit/byte rearrangement, overflow checks, fast division, multiplication, computing square roots, and much more. A fascinating and useful book.
+
+** Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman. Compilers. Principles, Techniques, and Tools.
+
+   Addison Wesley; 2nd ed. (August 2006)
+
+   Comment by Vladimir N. Makarov: Review_of_the_second_addition_of_the_Dragon_Book.
+
+* Linux Dynamic shared Libraries
+
+  main executable overrides the symbols in the shared library
+  Position independent code will call non-static functions via
+  the Procedure Linkage Table or PLT. This PLT does not exist in .o files.
+  In a .o file, use of the PLT is indicated by a special relocation.
+  When the program linker processes such a relocation, it will create an entry in the PLT.
+  It will adjust the instruction such that it becomes a PC-relative call to the PLT entry.
+  PC-relative calls are inherently position independent and thus do not require a relocation entry themselves.
+  The program linker will create a relocation for the PLT entry which tells the dynamic linker which symbol is
+  associated with that entry.
+
+  This process reduces the number of dynamic relocations in the shared library from one per function call to one per function called.
+  Further, PLT entries are normally relocated lazily by the dynamic linker.
+  On most ELF systems this laziness may be overridden by setting the LD_BIND_NOW environment variable when running the program.
+  However, by default, the dynamic linker will not actually apply a relocation to the PLT until some code actually calls the function
+  in question. This also speeds up startup time, in that many invocations of a program will not call every possible function.
+  This is particularly true when considering the shared C library, which has many more function calls than any typical program
+  will execute.
+
+  In order to make this work, the program linker initializes the PLT entries to load an index into some register or push it on the
+  stack, and then to branch to common code. The common code calls back into the dynamic linker,
+  which uses the index to find the appropriate PLT relocation, and uses that to find the function being called.
+  The dynamic linker then initializes the PLT entry with the address of the function, and then jumps to the code of the function.
+  The next time the function is called, the PLT entry will branch directly to the function.
+
+**  PLT  vs GOT
+
+    PLT ====> GOT identifier + address(第一次时 =====> dynamic linker<logic ===> 地址解析相关>)
+    PLT ====> 第一次寻找符号 =====> got 表里面的符号初始化都为 ====> plt 前面几条指令
+    执行完plt 头部几条指令后,最后一条指令直接指向 =====> LD Linker =====> 参与搜索相关库里面的函数名以及地址对应关系
+
+
+* IDA tricks
+
+** ARM & Thumb 切换
+   选中CODE32,按下ALT+G,然后选择T,value改成0x1,让代码统一,再按下C键 ====> OK
+
+--------------------------------------------------------------------------------------------------------
+
+* C Compiler Instracture Analysis
+
+** TCC Compiler(tcc audit)
+
+*** ANSI C89/C90
+
+**** Definitions And Limits
+
+     1) Storage
+     2) Align
+     3) UB(undefined behavior)
+
+     4) Environment
+        * Translation Environment
+        * Execution Environment
+     5) Trigraph Sequence
+        ??= #
+        ??( 1
+        ??/ \
+        ??) 1
+        ??’ ^
+        ??< I
+        ??! I
+        ??> 1
+        ??- -
+     6) memory
+        * automatic storage duration
+        * static storage duration
+
+**** Lexical Elements
+
+**** Conversion
+
+**** Expressions
+
+**** Constant Expression
+
+**** Declarations
+
+**** Statements
+
+**** External Definitions
+
+**** Preprocessinng Directives
+
+**** Future Language Directions(C90-c99-c11)
+
+**** Library
+
+     * size of integral types <limits.h>
+     * float types <float.h>
+
+** Flex && Bison
