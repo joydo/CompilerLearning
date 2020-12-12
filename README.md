@@ -2,11 +2,17 @@
 
 ## Online Resources
 
-* Compilers books: I'd start with "Engineering a Compiler" by Keith Cooper and Linda Torczon. http://craftinginterpreters.com/ is also a pretty great, programming-oriented intro, which may be good to work through alongside. For more on the analysis & compiler optimization side, "SSA-based Compiler Design" (http://ssabook.gforge.inria.fr/latest/; GitHub Mirror: https://github.com/pfalcon/ssabook) is a good follow-up.
+* Compilers books: 
+  - "Engineering a Compiler" by Keith Cooper and Linda Torczon. 
+http://craftinginterpreters.com/ is also a pretty great, programming-oriented intro, which may be good to work through alongside. For more on the analysis & compiler optimization side, "SSA-based Compiler Design" (http://ssabook.gforge.inria.fr/latest/; GitHub Mirror: https://github.com/pfalcon/ssabook) is a good follow-up.
 
-* Further readings: Book recommendations in https://github.com/MattPD/cpplinks/blob/master/compilers.md#... as well as program analysis resources (in particular lattice theory, type systems and programming languages theory, related notation): https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678dd...
+* Further readings: 
+  - Book recommendations in https://github.com/MattPD/cpplinks/blob/master/compilers.md#... 
+  - program analysis resources (in particular lattice theory, type systems and programming languages theory, related notation): https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678dd...
 
-* Courses: I can recommend the following: https://github.com/MattPD/cpplinks/blob/master/compilers.md#...
+* Courses: I can recommend the following: 
+
+  - https://github.com/MattPD/cpplinks/blob/master/compilers.md#...
 
 ## Online Curriculums
 - IU P423/P523: Compilers (Programming Language Implementation) - Jeremy Siek, with the course book "Essentials of Compilation: An Incremental Approach" (pretty interesting approach, with programming language features developed incrementally having a fully working compiler at each step, cf. http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf; implementation language Racket),
@@ -21,6 +27,8 @@
 
 - https://course.ccs.neu.edu/cs4410/
 
-- CS 6120: Advanced Compilers: The Self-Guided Online Course
-  https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/
+- CS 6120: Advanced Compilers: The Self-Guided Online Course(https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/)
   
+# Compiler Optimization and Bugs Finding
+
+  - Compiler bugs found by YARP Generator(https://github.com/intel/yarpgen)
