@@ -4,7 +4,8 @@
 
 * Compilers books: 
   - "Engineering a Compiler" by Keith Cooper and Linda Torczon. 
-http://craftinginterpreters.com/ is also a pretty great, programming-oriented intro, which may be good to work through alongside. For more on the analysis & compiler optimization side, "SSA-based Compiler Design" (http://ssabook.gforge.inria.fr/latest/; GitHub Mirror: https://github.com/pfalcon/ssabook) is a good follow-up.
+  - http://craftinginterpreters.com/ is also a pretty great, programming-oriented intro, which may be good to work through alongside. 
+  - For more on the analysis & compiler optimization side, "SSA-based Compiler Design" (http://ssabook.gforge.inria.fr/latest/; GitHub Mirror: https://github.com/pfalcon/ssabook) is a good follow-up.
 
 * Further readings: 
   - Book recommendations in https://github.com/MattPD/cpplinks/blob/master/compilers.md#... 
