@@ -1,0 +1,68 @@
+#+TITLE: Decompiler Learning
+#+AUTHOR: Joy Dong
+#+Date: 2020.9.10
+
+* Dynamic Instruments Framework
+
+** miasm
+
+** angr
+
+** qdbi
+
+** z3(solver)
+
+** unicorn
+
+** qiling
+
+** qemu
+
+* c++ decompiler(g++ vs clang++ vs MSVC)
+
+** Theory
+   Depth-first Search
+   Pre-order traveral
+   In-order traversal
+   Post-order traversal
+
+*** Control-flow Analysis
+    1) dominators to discover the loops(nodes)
+    2) interval Analysis(Structural Analysis) ==> 分析
+       one entry point ==>
+       这里构建相关的结构信息
+
+    extended basic blocks
+    basic blocks
+    Node traversal and search
+    1) breadth-first
+    2) depth-first
+
+    * Dominators And PostDominators
+
+*** Data-flow Analysis
+
+*** Structural Analysis
+    *iterative refinement*
+    semantics-preservation
+
+    back-edge(dominator)
+
+    for optimization
+    for recovering abstractions
+**** Loop Concepts
+     Loops are defined through domination.
+     An edge (s,d) is a back edge iff d dom s.
+     Each back edge (s,d) defines a natural loop, whose header is d.
+     The natural loop of a back edge (s,d) is the union of d and the set of nodes that can reach s without going through d
+
+* Phoenix Decompiler
+  * CFG Recovery
+  * Type Recovery
+  * Control-flow Structure Recovery
+  * Statement Translation
+
+  * Virtualize Edge
+
+  * Tail Regions
+  * Edge Virtualization
