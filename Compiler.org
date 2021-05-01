@@ -790,5 +790,71 @@ else     register  union
    2) manually implement loop unrolling by interleaving two syntactic
       constructs of C : * do-while,* switch statement(Duff's device)
   
+* Compiler Design for Programming Languages(references to LLVM Framework)
+
+** Frontend
+*** LR/LALR/LL/PEG/RD/Pratt/precedence algorithms
+    * scanning
+    * parsing
+    * parse-tree generation
+**** LL(1)
+     top-down parser
+     scan input left to right,produce output of the left-most bits first,look ahead at most 1 symbol at a time
+**** LR(1)
+     bottom-up parser
+     scan input left to right,produce output of the right-most bits first,look ahead at most 1 symbol at a time
+
+**** LALR(1)
+     one subset of LR(1) grammars,requring smaller parsing table
+
+**** PEG Grammar(PEG Parsers)(The Creator of the Python Language)
+     1) unlimited backtracking
+     2) use more memories
+a
+****
+
+*** good error messages and error recovery
+*** UX/HCI methods
+** architecture
+   1) traditional linear compiler pipeline
+   2) incremental/interactive/query-driven
+
+** static & dynamic semantics
+   1) Simply Typed lambda Calculus interpreter with lexically scoped variables and capture-avoiding substitution
+   2) tradeoffs of names vs De Bruijn indices vs De Bruijn levels vs locally nameless representation
+
+** type systems
+   1) Hindley-Milner type inference with constraint solving(Algorithm W) vs.bidirectional type checking algorithms
+   2) advances in dependent types,refinement types,subtyping...
+   3) natural deduction notation
+
+** Analysis
+   1) various IRs - SSA,CPS,ANF
+   2) implement things like liveness and escape analyses
+   3) Fixpoint/lattice/abstract-interpretation techniques
+   4) Loop-invariant code motion
+*** Control-flow Analysis
+**** Dominators Analysis
+
+*** Data-flow Analysis
+
+** optimization
+   1) Sketh the implementation of various common compiler optimizations
+      * dead code elimination
+      * inlining
+      * common subexpression elimination
+   2) program transformation techniques
+      * poluhedral model
+      * automatic vectorisation method
+   3) strength reduction
+   4) induction variable elimination
+
+** codegen
+   * explain how register allocation works with a greedy or heuristic graph-colouring approach
+   * instruction selection and calling conventions
+
+* GCC Options Understanding
+* llvm-based dragonffi(ffi,jitter)
+* Circle Compiler(C++ Script language)(Compile-time program execution)
 
 * Language 
