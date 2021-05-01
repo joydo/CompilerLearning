@@ -3,18 +3,35 @@
 * llvm-project
 
 ** LLVM
+*** LLVM C++ Library Summary
+    LLVM::DenseMap
 
 ** clang
 
 *** use clang as one library
-
 **** libClang
-
 **** libTooling
 
      * clang-check(syntax checking)
      * automatic fixing of compile errors(clang-fixit)
      * automatic code formatting(clang-format)
+
+
+
+*** clang compiling optimizations
+    * strength reduction
+    * inlining
+    * Constant folding
+    * Constant propagation
+    * Common subexpression elimination
+    * Dead Code removal
+    * Instruction selection
+    * Loop invariant code movement
+    * Peephole optimizations
+    * Tail call removal
+    * Loop unrolling
+*** clang linking optimizations
+    LTO <==> 不错的优化措施
 
 * swift
 
@@ -55,11 +72,46 @@
 
 * objectiveC
 
-* cplusplus
-
-** Library using
-   fmt ====> format prettier
-
+* C++ Compiler And Language Features
+** Named Requirements
+   * Basic
+     DefaultConstructible
+     MoveConstructible
+     CopyConstructible
+     MoveAssignable
+     CopyAssignable
+     Destructible
+   * Type Properties
+     TriviallyCopyable
+     TrivialType
+     StandardLayoutType
+     * PODType
+       scalar type
+       class type(struct,union,class)
+       an array of such type
+   * Libary-Wide
+     EqualityComparable
+     Allocator
+     FunctionObject
+     Callable
+     Predicate
+   * Iterator
+     LegacyIterator
+     LegacyInputIterator
+     LegacyOutputIterator
+     LegacyForwardIterator
+     LegacyBidirectionalIterator
+     LegacyRandomAccessIterator
+** C++ Itanium API
+备注: Data Layout
+*** Member Pointers
+    Data Member Pointers
+    Member Function Pointers
+    Non-POD Class Types
+** C++ VTable(clang++ implementation)
+   >> VTableContextBase <<
+*** ItaniumVTableContext
+*** MicrosoftVTableContext
 * python
 
 * rust
@@ -96,7 +148,6 @@
    界面设计只用 =====> JUCE 重要
 
 * 整理 C++ library + C++ Headers
-
 * LLVM 编译组件
 
 ** LLVM Header初探
@@ -145,7 +196,149 @@
 *** Register Allocation
 *** Prolog/Epilog Code Optimizations
 *** Code Emission
+*** LLVM IR Code
+**** Introdution
+     1) one in-memory compiler IR
+     2) an on-disk bitcode representation(JIT)
+     3) a human readable assembly language
+  * Identifiers
+    global('@')
+    local('%')
+    [named value + unnamed value + constants]
+***** High Level Structure
+****** global variables
+       compilation time memory allocation
+       definitions must be initialized
+****** function definition
+****** Alias
+****** named metadata
+****** Parameter Attributes
+       1) zeroext
+       2) signext
+       3) inreg
+       4) byval
+       5) byref
+       6) preallocated
+       7) inalloca
+       8) sret
+       9) align
+       10) noalias
+       11) nocapture
+       12) nofree
+       13) nest
+       14) returned
+       15) nonnull
+       16) dereferenceable
+       17) dereferenceable_or_null
+       18) swiftself
+       19) swifterror
+       20) immarg
+       21) noundef
+       22) alignstack
+****** linkage types
+       1) private
+          current_module
+       2) internal
+       3) available_externally
+       4) linkonce
+       5) weak
+       6) common
+       7) appending
+       8) extern_weak
+       9) linkonce_ord,weak_odr
+       10) external
 
+****** Calling Conventions
+       1) ccc
+       2) fastcc
+****** Visibility Styles
+       1) default
+       2) hidden
+       3) protected
+****** dll storage classes
+       1) dllimport
+       2) dllexport
+****** Thread Local Storage Models
+       1) localdynamic
+       2) initialexec
+       3) localexec
+****** Structure Types
+       omit
+****** Prologue Data
+       allow arbitrary code to be inserted prior to the function body
+****** Function attributes
+       1) alignstack
+       2) allocsize
+****** Data Layout
+****** Atomic Memory Ordering Constraints
+       * unordered
+       * monotonic
+       * acquire
+       * release
+       * acq_rel
+       * seq_cst
+****** Use-list order Directives(难懂)
+***** Type System
+      * Void Type
+      * Function Type
+      * First Class Type
+      ...
+***** Contants
+***** Other Values
+***** Metadata
+****** Metadata Nodes and Metadata Strings
+******* Specialized Metadata Nodes
+        DICompileUnit
+        DIFile
+        DIBasicType
+        DISubroutineType
+        DIDerivedType
+        DICompositeType
+        DISubrange
+        DIEnumerator
+        DITemplateTypeParameter
+        DITemplateValueParameter
+        DINamespace
+        DIGlobalVariable
+        DIGlobalVariableExpression
+        DISubprogram
+        DILexicalBlock
+        DILexicalBlockFile
+        DILocation
+        DILocalVariable
+        DIExpression
+        DIArgList
+        DIFlags
+        DIObjCProperty
+        DIImportedEntity
+        DIMacro
+        DIMacroFile
+        DILabel
+******* Other Metadatas
+        omit ==> use for learning
+***** ThinLTO Summary
+***** Instruction Reference
+****** Command Line Tools
+       * dsymutil ==> 处理dwarf debug infos
+       * llc 
+         input format:
+         1. llvm assembly language format
+         2. llvm bitcode format
+       * lli 
+****** Instructions
+       * terminal instructions
+         ret 
+         br(conditional vs unconditional)
+         switch
+         indirectbr
+         invoke(call)
+         callbr()
+         resume
+       * binary instructions
+         fneg(unary operation)
+       * bitwise binary instructions
+       * memory instructions
+       * others
 ** LLVM Code Obfuscator
    LLVM 10.0.0 =====> 重新构建
 
@@ -283,8 +476,9 @@ Comment by Vladimir N. Makarov: If you don't want to be compiler savvy but want 
 
 * C Compiler Instracture Analysis
 
-** TCC Compiler(tcc audit)
-
+** TCC Compiler(tcc audit)(C99 standard design analysis <=> Compiler)
+   备注:
+     字符集(character sets)
 *** ANSI C89/C90
 
 **** Definitions And Limits
@@ -292,7 +486,6 @@ Comment by Vladimir N. Makarov: If you don't want to be compiler savvy but want 
      1) Storage
      2) Align
      3) UB(undefined behavior)
-
      4) Environment
         * Translation Environment
         * Execution Environment
@@ -312,13 +505,76 @@ Comment by Vladimir N. Makarov: If you don't want to be compiler savvy but want 
 
 **** Lexical Elements
 
+***** Syntax
+      1) common token
+         * keyword
+           +--------+--------+--------+--------+
+           |auto    | double |int     | struct |
+           +--------+--------+--------+--------+
+           |break   |else    |long    |switch  |
+           +--------+--------+--------+--------+
+           |case    |enum    |register | typedef |
+           +--------+--------+--------+--------+
+           |char    |extern  |return  |union   |
+           +--------+--------+--------+--------+
+           |const   |float   |short   |unsigned |
+           +--------+--------+--------+--------+
+           |continue |for     | signed | void   |
+           +--------+--------+--------+--------+
+           |default |goto    |sizeof  |volatile |
+           +--------+--------+--------+--------+
+           |do      |   if   | static | while  |
+           +--------+--------+--------+--------+
+         * identifier
+                Scope:
+                    function,file,block,function prototype
+                Linkage:
+                    external,internal,none
+                Storage durations of objects:
+                    static
+                    automatic
+                type category:
+                   1) qualified type
+         * const
+           * volatile
+                   2) unqualified type(raw type)
+                Compatible type and Composite type:
+         * constant
+           1) float constant
+           2) Integer constant
+           3) Enumeration constant
+           4) Character constant
+         * string-literal
+         * operator
+         * punctuator
+      2) preprocessing token
+         * header-name
+         * identifier
+         * pp-number
+         * character-element
+         * string-literal
+         * operator
+         * punctuator
+      Notes:
+         Constraits <===>
+
 **** Conversion
+     Note:
+        tricky
+***** Arithmetic operands
+
+***** Other operands
 
 **** Expressions
+     * primary-expression
+     * postfix-operators
 
 **** Constant Expression
+     * constant expression
 
 **** Declarations
+     1) Initialization
+     2) Declarator
 
 **** Statements
 
@@ -333,4 +589,206 @@ Comment by Vladimir N. Makarov: If you don't want to be compiler savvy but want 
      * size of integral types <limits.h>
      * float types <float.h>
 
+*** ANSI C99(标准查验)
+**** Environment
+***** Translation Environment
+****** Translation Phrase
+       1. Physical source file multibyte characters are mapped in the source set
+
+***** Execution Environment
+****** FreeStanding environment
+****** Hosted environment
+***** Considerations
+      * Trigraph sequences
+        ??= #      ??) ]     ??! |
+        ??( [      ??' ^     ??> }
+        ??/ \      ??< {     ??- ~
+      * Some Limits for Translatio
+
+**** Language(Design)
+
+***** Notion
+***** Concepts
+      * Scope of identifier
+        1. file
+        2. block
+        3. function
+        4. function prototype
+      * linkage of identifier
+        1. external
+        2. internal
+        3. none
+      * name spaces of identifier
+      * storage durations of objects
+        1. static
+        2. automatic
+        3. allocated
+      * Types
+        1. object types
+        2. function types
+        3. incomplete types
+        Classification:
+           Single Type:
+           * char
+           * int
+           * float
+           * complex
+           * enumeration
+           * void(incomplete type)
+           Derived Type:
+           * array type
+           * structure type
+           * union type
+           * function type
+           * pointer type
+           Arithmetic types and Pointer types = scalar types
+           Array types and Structure types = aggregate types
+           qualified types = {const,volatile,restrict}
+           unqualified types
+
+***** Conversions
+      implicit conversion vs explicit conversion
+      * Arithmetic Operands
+      * Other Operands
+        lvalue
+        {
+        1. expression with one object type or an incomplete type(not including void)
+        2. modifiable lvalue = not array type | does not have an incomplete type | does not have a const-qualified type | not embeded in
+           structure or union
+        }
+        function designator
+        void
+
+***** Lexical elements
+      Syntax:
+      token ==>
+      keyword
+      identifier
+      constant
+      string-literal
+      punctuator
+
+      preprocessing-token:
+      header-name
+      identifier
+      pp-number
+      character-constant
+      string-literal
+      punctuator
+****** Keywords
+auto     enum      restrict   unsigned
+break    extern    return     void
+case     float     short      volatile
+char     for       signed     while
+const    goto      sizeof     _Bool
+continue if        static     _Complex
+default  inline    struct     _Imaginary
+do       int       switch
+double   long      typedef
+else     register  union
+****** Identifiers
+****** Constants
+       unsigned-suffix: u U
+       long-suffix: l L
+       long-long-suffix: ll / LL
+***** Expressions
+      * Primary Expressions
+      * postfix operators
+        * array subscripting
+        * function calls
+        * Structure and Union members
+        * Postfix increment and decrement operators
+        * Compound literals
+      * Unary Operators
+        * prefix increment and decrement operators
+        * address and indirection operators
+        * Unary arithmetic operators
+        * sizeof(operator)
+        * cast operators
+      * Multiplicative Operators
+      * Additive Operators
+      * Bitwise shift Operators
+      * Relational Operators
+      * Equality Operators
+      * BitWise AND Operator
+      * BitWise exclusive OR Operator
+      * BitWise inclusive OR Operator
+      * Logical AND Operator
+      * Logical OR  Operator
+      * Conditional Operator
+      * Assignment Operators
+        * simple assignment
+        * compound assignment
+      * Comma Operator
+***** Constant expressions
+***** Declarations
+      * Storage-Class specifiers
+        {typedef,extern,static,auto,register}
+      * Type Specifiers
+        * Structure and Union Specifiers
+        * Enumeration Specifiers
+        * Tags(incomplete type)
+      * Type Qualifiers
+        const
+        volatile
+        restrict
+      * Function Specifiers
+      * Declarators
+        function or object(scope,storage duration,type)
+        * pointer declarators
+        * Array declarators
+        * Function declarators(prototypes)(return type limit: not function type or array type)
+        *
+      * Type Names
+      * Type Definitions
+      * Initialization(is different from c++(initialization lists))
+***** Statements and Blocks
+      <statement + block + full expression>
+      * labeled-statement
+      * compound-statement
+      * expresssion-statement
+      * selection-statement
+      * iteration-statement
+      * jump-statement
+***** External definitions
+***** Preprocessing directives
+***** Future language directions
+
+**** Library
+
+*** source code audit
+
+**** compiler
+**** linker
+**** assembler
+**** codegen
+
+**** some file deeply audit
+***** tcc.h
+      * Core C Runtime Library(linux)
+        crt1.o: provide the '_start' symbol for the runtime linker(ld.so.1) jumping to, only use for building executables
+        crti.o + crtn.o: provide prologue and epilogue(.init + .fini),use for executables and shared objects
+
 ** Flex && Bison
+
+* Javascript JIT Compiler Design
+** JavascriptCore(Safari)
+** SpiderMonkey(Firefox)
+** V8(Chrome)
+
+** technique idioms
+*** inline cache
+*** Speculative Optimization
+*** Deoptimization
+*** Common subexpression elimination(CSE)
+
+* CMAKE Project(CXX & Javascript & JIT Design)
+
+* Some tricks for Compiler Or Instructions Design
+** Instruction
+   1) jmp | branch 
+   2) manually implement loop unrolling by interleaving two syntactic
+      constructs of C : * do-while,* switch statement(Duff's device)
+  
+
+* Language 
