@@ -34,3 +34,4 @@
 # Compiler Optimization and Bugs Finding
 
   - Compiler bugs found by YARP Generator(https://github.com/intel/yarpgen)
+  - "The compiler wiil optimize that away"(oo vs od)(https://news.ycombinator.com/item?id=27010965)
