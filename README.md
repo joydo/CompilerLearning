@@ -35,3 +35,6 @@
 
   - Compiler bugs found by YARP Generator(https://github.com/intel/yarpgen)
   - "The compiler wiil optimize that away"(oo vs od)(https://news.ycombinator.com/item?id=27010965)
+  - About `-fno-semantic-interposition`
+    * https://maskray.me/blog/2021-05-09-fno-semantic-interposition
+    * https://gist.github.com/MaskRay/2d4dfcfc897341163f734afb59f689c6
