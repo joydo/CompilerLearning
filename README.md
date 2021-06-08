@@ -38,3 +38,6 @@
   - About `-fno-semantic-interposition`
     * https://maskray.me/blog/2021-05-09-fno-semantic-interposition
     * https://gist.github.com/MaskRay/2d4dfcfc897341163f734afb59f689c6
+
+# AST vs CST
+  - https://news.ycombinator.com/item?id=27419237 (python ast discussions)
