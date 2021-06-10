@@ -41,3 +41,6 @@
 
 # AST vs CST
   - https://news.ycombinator.com/item?id=27419237 (python ast discussions)
+
+# Linker 
+  - https://news.ycombinator.com/item?id=27444647
