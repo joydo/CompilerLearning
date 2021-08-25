@@ -1,6 +1,7 @@
 # HackerNews Comments Snippets
 
 ## Tech Interview Handbook
+### First Comment
 > Forget the Hunger Games, here is the dystopian shit right now:
 >  For a medium level leetcode problem here is the time split (for which 20 min are given typically):
 >  1. 4 min => Read/interpret/parse the problem statement
@@ -44,6 +45,7 @@
 
 --------------------------
 
+### Second Comment
 > Interview preparedness: 100 leetcode questions, 30 easy, 50 medium, 20 hard (my opinion on them: I like them). Average solving time: 30 minutes for leetcode medium (not quite FAANG level yet).
 > 
 > In my particular case, I view data structures as organisms. I use plants a lot to visualize linked lists and trees. An array + linked list is a brick wall (array), and a vine (a node looks like a vine leaf). Traversing that linked list is dying the whole vine a certain color. Stacks are actual stacks, queues are queues of people, a set I need to iterate through (like an array) looks like my laundry basket, etc. I love visualizing data structures like this and it gives me a sense of wonder. That sense of wonder translates into motivation, and that's how I'm owning it with my personality.
